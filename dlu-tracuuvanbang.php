@@ -10,6 +10,11 @@
  * License: GPLv2
  */
 
+require 'includes/hook-action.php';
+require 'includes/hook-filter.php';
+require 'includes/option-api.php';
+require 'includes/admin-menu.php';
+
 register_activation_hook(__FILE__, 'dlu_tracuuvanbang_active');
 
 function dlu_tracuuvanbang_active()
