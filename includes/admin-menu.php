@@ -6,8 +6,8 @@
 function add_admin_menu()
 {
   add_menu_page(
-    'Quản lý văn bằng',
-    'Quản lý văn bằng',
+    'Quản lý hồ sơ',
+    'Quản lý hồ sơ',
     'manage_options',
     'plugin-options',
     'show_plugin_options',
@@ -29,14 +29,15 @@ function show_plugin_options()
  */
 function add_admin_submenu()
 {
-  add_submenu_page('plugin-options', 'Cập nhật thông tin văn bằng', 'Cập nhật thông tin văn bằng', 'manage_options', 'plugin-options-update-vanbang', 'show_update_vanbang_page');
-  add_submenu_page('plugin-options', 'Xuất thông tin văn bằng', 'Xuất thông tin văn bằng', 'manage_options', 'plugin-options-export-vanbang', 'show_export_vanbang_page');
+  add_submenu_page('plugin-options', 'Cập nhật thông tin hồ sơ', 'Cập nhật thông tin hồ sơ', 'manage_options', 'plugin-options-update-hoso', 'show_update_hoso_page');
+  add_submenu_page('plugin-options', 'Xuất thông tin hồ sơ', 'Xuất thông tin hồ sơ', 'manage_options', 'plugin-options-export-hoso', 'show_export_hoso_page');
+  add_submenu_page('plugin-options', 'Xem danh sách hồ sơ', 'Xem danh sách hồ sơ', 'manage_options', 'plugin-options-view-hoso', 'show_view_hoso_page');
 }
 
 /**
  * Thêm nội dung cho menu Cập nhật thông tin văn bằng
  */
-function show_update_vanbang_page()
+function show_update_hoso_page()
 {
   require('template/update-page.php');
 }
@@ -44,9 +45,17 @@ function show_update_vanbang_page()
 /**
  * Thêm nội dung cho menu Xuất thông tin văn bằng
  */
-function show_export_vanbang_page()
+function show_export_hoso_page()
 {
   require('template/export-page.php');
+}
+
+/**
+ * Thêm nội dung cho menu Xuất thông tin văn bằng
+ */
+function show_view_hoso_page()
+{
+  require('template/view-page.php');
 }
 
 add_action('admin_menu', 'add_admin_menu');
