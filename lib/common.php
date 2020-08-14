@@ -132,6 +132,35 @@ function printTable($array)
 }
 
 /**
+ * In bảng dưới dạng mã HTML
+ */
+function printHeaderTable()
+{
+  echo '<div class="table-responsive">';
+  echo '<table class="table table-hover table-striped table-bordered">';
+  echo '<thead>';
+  echo "<tr>";
+  echo "
+  <th>Họ tên</th>
+  <th>Ngày sinh</th>
+  <th>Nơi sinh</th>
+  <th>Số CMND</th>
+  <th>Email</th>
+  <th>SDT</th>
+  <th>Số báo danh</th>
+  <th>Ngày cấp</th>
+  <th>Số hiệu bằng</th>
+  <th>Số quyết định</th>
+  <th>Điểm trắc nghiệm</th>
+  <th>Điểm thực hành</th>
+  ";
+  echo "</tr>";
+  echo '</thead>';
+  echo '</table>';
+  echo '</div>';
+}
+
+/**
  * Cập nhật CSDL
  */
 function updateDatabase($array)
@@ -142,7 +171,7 @@ function updateDatabase($array)
 /**
  * Truy vấn và trả về từ CSDL
  */
-function getAllDatabase()
+function getAll()
 {
   $array = null;
   return $array;
@@ -162,6 +191,14 @@ function exportArrayToExcel($array)
 function importFromExcel($inputFileName)
 {
   $array = getDataExcel(($inputFileName));
+  # code...
+}
+
+/**
+ * Truy vấn hồ sơ dựa trên ngày cấp bằng
+ */
+function getDataInRange($datebegin, $dateend)
+{
 }
 
 function showCustomAlert($content)
