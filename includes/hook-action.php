@@ -3,7 +3,7 @@
 function dlu_load_plugin_css()
 {
   wp_register_style('style1', 'https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css', 'all');
-  wp_register_style('style2', plugins_url('../css/style.css', __FILE__), 'all');
+  wp_register_style('style2', plugins_url('dlu-tracuuvanbang/css/style.css'), 'all');
   wp_enqueue_style('style1');
   wp_enqueue_style('style2');
 }

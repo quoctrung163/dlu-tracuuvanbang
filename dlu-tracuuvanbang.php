@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin Name: Tra Cứu Văn Bằng
+ * Plugin Name: Quản Lý Văn Bằng Học Viên
  * Plugin URI: http://cict.dlu.edu.vn/
- * Description: Tra cứu văn bằng học viên
+ * Description: Chức năng quản lý văn bằng học viên, cho phép thêm, xoá, sửa
  * Version: 1.0 
  * Author: quoctrung163, quocthang0507
  * Author URI: github.com

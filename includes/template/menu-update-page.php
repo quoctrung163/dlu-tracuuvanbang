@@ -3,7 +3,7 @@
 $file = ABSPATH . "/wp-content/plugins/dlu-tracuuvanbang/lib/common.php";
 require_once($file);
 
-echo '<h1 style="text-align: center">Cập nhật thông tin hồ sơ từ file Excel</h1>';
+echo '<h1>Cập nhật thông tin văn bằng từ file Excel</h1>';
 if (isset($_POST["submit"])) {
   if ($_FILES["file"]["error"] > 0) {
     echo "Error: " . $_FILES["file"]["error"] . "<br>";
@@ -33,8 +33,9 @@ if (isset($_POST["submit"])) {
 }
 
 ?>
-<h6>Đầu tiên là hãy đảm bảo nội dung của file Excel cần nhập theo đúng mẫu sau, hoặc click vào 
-  <a href="/WebTTCNTT/wp-content/uploads/blank.xlsx" download="example.xlsx">đây</a> để tải về file mẫu</h6>
+<h3>Chức năng này có vai trò là lưu thông tin liên quan đến văn bằng</h3>
+<h4>Đầu tiên là hãy đảm bảo nội dung của file Excel cần nhập theo đúng mẫu sau, hoặc click vào 
+  <a href="/WebTTCNTT/wp-content/uploads/blank.xlsx" download="example.xlsx">đây</a> để tải về file mẫu</h4>
 <?php printHeaderTable(); ?>
 <h6>Sau khi hoàn tất, upload file có chứa thông tin kết quả vào chỗ này</h6>
 <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form-data">
