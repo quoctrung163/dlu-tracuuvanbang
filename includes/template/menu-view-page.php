@@ -7,6 +7,6 @@ require_once($file2);
 // echo ABSPATH;
 echo '<h1>Xem danh sách văn bằng học viên</h1>';
 echo '<h3>Toàn bộ thông tin hồ sơ văn bằng của các học viên trong cơ sở dữ liệu sẽ được hiển thị ở đây</h3>';
-$data = getDataExcel(ABSPATH . "/wp-content/plugins/dlu-tracuuvanbang/data/data.xlsx");
+$data = getDataExcel(ABSPATH . "/wp-content/plugins/dlu-tracuuvanbang/data/form-example.xlsx");
 
 printTable($data);
