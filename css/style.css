@@ -1,18 +1,63 @@
 h1.myplugin {
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 1.75rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.75rem;
 }
 
 h2.myplugin {
-    font-size: 1.5rem;
-    text-align: center;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 h3.myplugin {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 
 h4.myplugin {
-    font-size: 1rem;
+  font-size: 1rem;
+}
+
+.quan-ly-van-bang-hoc-vien_page_plugin-options-view-hoso #text {
+  display: none !important;
+}
+
+/* Table CSS*/
+.fixed {
+  background: white;
+  position: sticky;
+  top: 0;
+  /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+.zui-table {
+  border: none;
+  border-right: solid 1px #DDEFEF;
+  border-collapse: separate;
+  border-spacing: 0;
+  font: normal 13px Arial, sans-serif;
+}
+
+.zui-table thead th {
+  background-color: #DDEFEF;
+  border: none;
+  color: #336B6B;
+  padding: 10px 30px;
+  text-align: left;
+  text-shadow: 1px 1px 1px #fff;
+  white-space: nowrap;
+}
+
+.zui-table tbody td {
+  border-bottom: solid 1px #DDEFEF;
+  color: #333;
+  padding: 10px;
+  text-shadow: 1px 1px 1px #fff;
+  white-space: nowrap;
+}
+
+.zui-wrapper {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: auto !important;
 }

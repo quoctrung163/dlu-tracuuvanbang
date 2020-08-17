@@ -100,6 +100,32 @@ function filterByAgrs($array, $hoTen, $CMND, $soBaoDanh, $soHieuBang, $soQuyetDi
   return $result;
 }
 
+function printTable2($array)
+{
+  echo '<div class="zui-wrapper">';
+  echo '<table class="zui-table">';
+  echo '<thead>';
+  echo '<tr>';
+  foreach (unserialize(HEADER_TABLE) as $item) {
+    echo '<th>' . $item . '</th>';
+  }
+  echo '</tr>';
+  echo '</thead>';
+  echo '<tbody>';
+  if ($array != null)
+    foreach ($array as $item) {
+      echo '<tr>';
+      foreach ($item as $col) {
+        echo '<td>' . $col . '</td>';
+      }
+      echo '</tr>';
+    }
+  echo '<tbody>';
+  echo '</table>';
+  echo '</div>';
+}
+
+
 /**
  * In bảng dưới dạng mã HTML
  */
