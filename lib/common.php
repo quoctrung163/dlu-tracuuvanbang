@@ -1,7 +1,15 @@
 <?php
 
 $file1 = ABSPATH . "/wp-content/plugins/dlu-tracuuvanbang/lib/excelData.php";
-require($file1);
+$files = ABSPATH . "/wp-content/plugins/dlu-custom-post-type/includes/converter-dlu-custom-post-type.php";
+require_once($file1);
+require_once($files);
+
+define("HEADER_TABLE", serialize(array(
+  "ID", "Họ tên", "Ngày sinh", "Nơi sinh", "Số CMND", "Email", "SDT", "Số báo danh",
+  "Ngày cấp", "Số hiệu bằng", "Số quyết định", "Điểm trắc nghiệm", "Điểm thực hành"
+)));
+
 
 /**
  * Đổi chuỗi có dấu thành không dấu
@@ -101,21 +109,10 @@ function printTable($array)
   echo '<table class="table table-hover table-striped table-bordered">';
   echo '<thead>';
   echo "<tr>";
-  echo "
-  <th>ID</th>
-  <th>Họ tên</th>
-  <th>Ngày sinh</th>
-  <th>Nơi sinh</th>
-  <th>Số CMND</th>
-  <th>Email</th>
-  <th>SDT</th>
-  <th>Số báo danh</th>
-  <th>Ngày cấp</th>
-  <th>Số hiệu bằng</th>
-  <th>Số quyết định</th>
-  <th>Điểm trắc nghiệm</th>
-  <th>Điểm thực hành</th>
-  ";
+  foreach (unserialize(HEADER_TABLE) as $item) {
+    echo '<th>' . $item . '</th>';
+  }
+
   echo "</tr>";
   echo '</thead>';
   echo '<tbody>';
@@ -141,22 +138,9 @@ function printHeaderTable()
   echo '<table class="table table-hover table-striped table-bordered">';
   echo '<thead>';
   echo "<tr>";
-  echo "
-  <th>ID</th>
-  <th>Họ tên</th>
-  <th>Ngày sinh</th>
-  <th>Nơi sinh</th>
-  <th>Số CMND</th>
-  <th>Email</th>
-  <th>SDT</th>
-  <th>Số báo danh</th>
-  <th>Ngày cấp</th>
-  <th>Số hiệu bằng</th>
-  <th>Số quyết định</th>
-  <th>Điểm trắc nghiệm</th>
-  <th>Điểm thực hành</th>
-  ";
-  echo "</tr>";
+  foreach (unserialize(HEADER_TABLE) as $item) {
+    echo '<th>' . $item . '</th>';
+  }
   echo '</thead>';
   echo '</table>';
   echo '</div>';
@@ -173,18 +157,33 @@ function updateDatabase($array)
 /**
  * Truy vấn và trả về từ CSDL
  */
-function getAll()
+function getHocVien()
 {
-  $array = null;
-  return $array;
+  return getAllHocVienDangKy(true);
 }
 
 /**
- * Xuất dữ liệu từ mảng vào file excel
+ * Truy vấn và trả về từ CSDL
  */
-function exportArrayToExcel($array)
+function getHocVienDangKy()
 {
-  # code...
+  return getAllHocVienDangKy(false);
+}
+
+/**
+ * Truy vấn hồ sơ dựa trên ngày cấp bằng
+ */
+function getHocVienInRange($datebegin, $dateend)
+{
+  return getAllHocVienDangKy(true, $datebegin, $dateend);
+}
+
+/**
+ * Xuất dữ liệu từ mảng vào file excel và trả về đường dẫn đến file excel
+ */
+function exportArrayToExcel($array, $name)
+{
+  return setDataExcel($array, $name);
 }
 
 /**
@@ -194,13 +193,6 @@ function importFromExcel($inputFileName)
 {
   $array = getDataExcel(($inputFileName));
   # code...
-}
-
-/**
- * Truy vấn hồ sơ dựa trên ngày cấp bằng
- */
-function getDataInRange($datebegin, $dateend)
-{
 }
 
 function showCustomAlert($content)
