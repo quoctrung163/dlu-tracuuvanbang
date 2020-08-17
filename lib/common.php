@@ -102,6 +102,7 @@ function printTable($array)
   echo '<thead>';
   echo "<tr>";
   echo "
+  <th>ID</th>
   <th>Họ tên</th>
   <th>Ngày sinh</th>
   <th>Nơi sinh</th>
@@ -141,6 +142,7 @@ function printHeaderTable()
   echo '<thead>';
   echo "<tr>";
   echo "
+  <th>ID</th>
   <th>Họ tên</th>
   <th>Ngày sinh</th>
   <th>Nơi sinh</th>

@@ -1,18 +1,18 @@
-h1 {
+h1.myplugin {
     text-align: center;
     text-transform: uppercase;
     font-size: 1.75rem;
 }
 
-h2 {
+h2.myplugin {
     font-size: 1.5rem;
     text-align: center;
 }
 
-h3 {
+h3.myplugin {
     font-size: 1.25rem;
 }
 
-h4 {
+h4.myplugin {
     font-size: 1rem;
 }
