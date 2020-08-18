@@ -17,7 +17,6 @@ function add_admin_menu()
 	add_submenu_page('plugin-options', 'Xem danh sách', 'Xem danh sách', 'manage_options', 'plugin-options-view-hoso', 'addXemDanhSachMenu');
 	add_submenu_page('plugin-options', 'Cập nhật thông tin', 'Cập nhật thông tin', 'manage_options', 'plugin-options-update-hoso', 'addCapNhatDanhSachMenu');
 	add_submenu_page('plugin-options', 'Xuất thông tin', 'Xuất thông tin', 'manage_options', 'plugin-options-export-hoso', 'addXuatDanhSachMenu');
-	add_submenu_page('plugin-options', 'Xoá thông tin', 'Xoá thông tin', 'manage_options', 'plugin-options-delete-hoso', 'addXoaDanhSachMenu');
 	remove_submenu_page('plugin-options', 'plugin-options');
 }
 
@@ -44,14 +43,5 @@ function addXemDanhSachMenu()
 {
 	require('template/menu-view-page.php');
 }
-
-/**
- * Thêm nội dung cho menu Xoá thông tin văn bằng
- */
-function addXoaDanhSachMenu()
-{
-	require('template/menu-delete-page.php');
-}
-
 
 add_action('admin_menu', 'add_admin_menu');
