@@ -60,7 +60,8 @@ if (isset($_POST["XuatHocVienDK"])) {
 				để lấy file Excel danh sách học viên đăng ký.
 			</form>
 		</li>
-		<li>Bước 2. Nhập các thông tin cần thiết vào các cột ở bên phải. Thông tin của các học viên sẽ được lưu vào CSDL, do đó cần phải đảm bảo độ chính xác của dữ liệu.</li>
+		<li>Bước 2. Nhập các thông tin cần thiết vào các cột ở bên phải. Thông tin của các học viên sẽ được lưu vào CSDL, do đó cần phải đảm bảo độ chính xác của dữ liệu. 
+		Ngoài ra không được thay đổi ID ở cột đầu tiên.</li>
 		<?php printHeaderTable(); ?>
 		<li>
 			<form action="<?php $_self ?>" method="post" enctype="multipart/form-data">
