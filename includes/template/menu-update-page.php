@@ -50,18 +50,18 @@ if (isset($_POST["XuatHocVienDK"])) {
 }
 ?>
 
-<h1 class="myplugin">Cập nhật thông tin văn bằng từ file Excel</h1>
-<h3 class="myplugin">Chức năng này có vai trò là lưu thông tin văn bằng của học viên vào CSDL thông qua file Excel</h3>
+<h1 class="myplugin">Cập nhật thông tin văn bằng học viên</h1>
+<h3 class="myplugin">Để cập nhật thông tin văn bằng, vui lòng thực hiện theo các thao tác dưới đây:</h3>
 <p class="myplugin">
 	<ul class="dlu-admin-menu-update">
 		<li>
 			<form action="<?php $_self ?>" method="post" enctype="multipart/form-data">
-				Bước 1. Click vào nút sau đây <input type="submit" class="btn btn-secondary" name="XuatHocVienDK" value="Download" />
+				Bước 1. Click vào nút sau đây <input type="submit" class="btn btn-secondary" name="XuatHocVienDK" value="Tải về" />
 				để lấy file Excel danh sách học viên đăng ký.
 			</form>
 		</li>
-		<li>Bước 2. Nhập các thông tin cần thiết vào các cột ở bên phải. Thông tin của các học viên sẽ được lưu vào CSDL, do đó cần phải đảm bảo độ chính xác của dữ liệu. 
-		Ngoài ra không được thay đổi ID ở cột đầu tiên.</li>
+		<li>Bước 2. Nhập các thông tin cần thiết vào các cột ở bên phải. Thông tin của các học viên sẽ được lưu vào CSDL, do đó cần phải đảm bảo độ chính xác của dữ liệu.
+			Ngoài ra không được thay đổi ID ở cột đầu tiên.</li>
 		<?php printHeaderTable(); ?>
 		<li>
 			<form action="<?php $_self ?>" method="post" enctype="multipart/form-data">
@@ -70,6 +70,9 @@ if (isset($_POST["XuatHocVienDK"])) {
 				<input type="submit" name="CapNhatTT" value="Cập nhật" class="btn btn-primary">
 			</form>
 		</li>
-		<li><em>Nếu trường hợp có sai sót, thì chỉ cần nhập từ file Excel những học viên cần sửa đổi, không cần phải nhập tất cả.</em></li>
 	</ul>
 </p>
+<h3 class="myplugin">Lưu ý:</h3>
+<ul class="dlu-admin-menu-update">
+	<li><em>Nếu trường hợp có sai sót, thì chỉ cần nhập từ file Excel những học viên cần sửa đổi, không cần phải nhập tất cả.</em></li>
+</ul>
