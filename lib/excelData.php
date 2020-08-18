@@ -14,7 +14,6 @@ function getDataExcel($inputFileName)
 	$reader->setReadDataOnly(false);
 	$reader->setReadEmptyCells(false);
 	$data = $reader->load($inputFileName)->getActiveSheet()->toArray(null, true, true, false);
-
 	unset($data[0]);
 	return $data;
 }

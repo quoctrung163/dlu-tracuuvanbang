@@ -1,5 +1,6 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\Writer\Ods\Meta;
 
 $file1 = ABSPATH . "/wp-content/plugins/dlu-tracuuvanbang/lib/excelData.php";
@@ -72,7 +73,7 @@ function compare2Str($strOriginal, $strChild)
 function filterByAgrs($array, $hoTen, $CMND, $soBaoDanh, $soHieuBang, $soQuyetDinh)
 {
 	if ($hoTen == null && $CMND == null && $soBaoDanh == null && $soHieuBang == null && $soQuyetDinh == null) {
-		echo "<script type='text/javascript'>alert('Không được để trống');</script>";
+		 showCustomAlert('Không được để trống');
 		return null;
 	}
 	$result = $array;
@@ -188,7 +189,7 @@ function mapArrayToObject($array)
 		'email' => $array[5],
 		'tele' => $array[6],
 		'sobaodanh' => $array[7],
-		'ngaycap' => $array[8],
+		'ngaycap' => fixDateFormatFromExcel($array[7], 'd/m/Y'),
 		'sohieubang' => $array[9],
 		'soquyetdinh' => $array[10],
 		'diemtracnghiem' => $array[11],
@@ -257,4 +258,16 @@ function importFromExcel($inputFileName)
 function showCustomAlert($content)
 {
 	echo "<script type='text/javascript'>alert('" . $content . "');</script>";
+}
+
+/**
+ * Chuyển đổi số ngày trong Excel sang chuỗi ngày tháng trong PHP
+ */
+function fixDateFormatFromExcel($EXCEL_DATE, $format)
+{
+	if (gettype($EXCEL_DATE) == "integer") {
+		$temp = ($EXCEL_DATE - 25569) * 86400;
+		return date($format, $temp);
+	}
+	return $EXCEL_DATE;
 }
