@@ -189,7 +189,7 @@ function mapArrayToObject($array)
 		'email' => $array[5],
 		'tele' => $array[6],
 		'sobaodanh' => $array[7],
-		'ngaycap' => fixDateFormatFromExcel($array[7], 'd/m/Y'),
+		'ngaycap' => fixDateFormatFromExcel($array[8], 'd/m/Y'),
 		'sohieubang' => $array[9],
 		'soquyetdinh' => $array[10],
 		'diemtracnghiem' => $array[11],
@@ -251,7 +251,7 @@ function exportArrayToExcel($array, $name)
  */
 function importFromExcel($inputFileName)
 {
-	$array = getDataExcel(($inputFileName));
+	$array = getDataExcel($inputFileName);
 	# code...
 }
 
