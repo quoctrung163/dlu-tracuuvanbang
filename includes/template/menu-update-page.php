@@ -4,43 +4,48 @@ $file = ABSPATH . "/wp-content/plugins/dlu-tracuuvanbang/lib/common.php";
 require_once($file);
 
 if (isset($_POST["CapNhatTT"])) {
+	// Lỗi upload file
 	if ($_FILES["file"]["error"] > 0) {
 		echo "Error: " . $_FILES["file"]["error"] . "<br>";
 		showCustomAlert('Lỗi upload file!');
-	} else {
+	} else { // Upload file thành công
 		$name = $_FILES["file"]["name"];
 		// get extension of file
 		$ext = end(explode(".", $name));
-
 		if ($ext != 'xlsx') {
 			showCustomAlert('File upload không đúng định dạng (.xlsx)');
 			return;
 		}
-
+		// Lưu vào server
 		$newname = date('d-m-Y-H-i-s') . '.' . $ext;
-		$filetoStore = ABSPATH . 'wp-content/uploads/';
+		$filetoStore = ABSPATH . 'wp-content/uploads/Files';
 		$target = $filetoStore . $newname;
 		move_uploaded_file($_FILES['file']['tmp_name'], $target);
-
+		// Đọc dữ liệu và tiến hành cập nhật thông tin
 		$data = getDataExcel($target);
-		if (updateDatabase($data)) {
-			showCustomAlert('Cập nhật thành công dữ liệu vào CSDL');
+		$result = updateDatabase($data);
+		if ($result != true) {
+			echo '<h2>Đã có lỗi khi cập nhật những dòng sau</h2>';
+			printTable($result);
 		} else {
-			showCustomAlert('Cập nhật không thành công');
+			showCustomAlert('Cập nhật thành công dữ liệu vào CSDL');
 		}
 	}
 }
 
 if (isset($_POST["XuatHocVienDK"])) {
 	$array = getHocVienDangKy();
-	$filename = exportArrayToExcel($array, 'Danh sach hoc vien dang ky');
-	header("Content-type: application/vnd.ms-excel", true, 200);
+	$filepath = exportArrayToExcel($array, 'Danh sach hoc vien dang ky');
+	$filename = basename($filepath);
+	header("Content-type: application/octet-stream");
 	header("Content-disposition: attachment; filename=$filename");
-	//header("Pragma: no-cache");
 	header("Expires: 0");
+	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+	header('Pragma: public');
+	ob_end_clean();
 	ob_clean();
 	flush();
-	readfile($filename);
+	readfile($filepath);
 	wp_die();
 }
 ?>

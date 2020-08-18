@@ -5,6 +5,9 @@ require('vendor/autoload.php');
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
+/**
+ * Đọc dữ liệu từ excel và trả về mảng
+ */
 function getDataExcel($inputFileName)
 {
 	$reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader("Xlsx");
@@ -16,6 +19,9 @@ function getDataExcel($inputFileName)
 	return $data;
 }
 
+/**
+ * Chuyển dữ liệu từ array vào file excel với tên file cho trước và trả về đường dẫn đầy đủ của file trên server
+ */
 function setDataExcel($array, $name)
 {
 	$spreadsheet = new Spreadsheet();
@@ -29,7 +35,7 @@ function setDataExcel($array, $name)
 	// Thêm dữ liệu từ array
 	$spreadsheet->getActiveSheet()->fromArray($array, null, 'A2');
 	$writer = new Xlsx($spreadsheet);
-	$fullpath = ABSPATH . 'wp-content/uploads/' . $name . '_' . date('d-m-Y') . '.xlsx';
-	$writer->save($fullpath);
-	return $fullpath;
+	$filepath = ABSPATH . 'wp-content/uploads/Files/' . $name . '_' . date('d-m-Y') . '.xlsx';
+	$writer->save($filepath);
+	return $filepath;
 }

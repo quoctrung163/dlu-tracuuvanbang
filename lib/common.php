@@ -198,15 +198,19 @@ function mapArrayToObject($array)
 }
 
 /**
- * Cập nhật CSDL
+ * Cập nhật CSDL, trả về True nếu cập nhật thành công array, ngược lại sẽ trả về thông tin bị lỗi
  */
 function updateDatabase($array)
 {
+	$result = array();
 	foreach ($array as $item) {
 		$obj = mapArrayToObject($item);
-		saveMetaData($item[0], $obj);
+		if (!saveMetaData($item[0], $obj))
+			array_push($result, $item);
 	}
-	return true;
+	if (count($result) == 0)
+		return true;
+	return $result;
 }
 
 /**
@@ -230,7 +234,7 @@ function getHocVienDangKy()
  */
 function getHocVienInRange($datebegin, $dateend)
 {
-	return getAllHocVienDangKy(true, $datebegin, $dateend);
+	return getAllHocVienVanBang($datebegin, $dateend);
 }
 
 /**

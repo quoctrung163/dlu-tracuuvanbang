@@ -7,21 +7,24 @@ if (isset($_POST["Xuat"]) || isset($_POST["XuatTatCa"])) {
 			showCustomAlert("Không được để trống các trường bắt buộc");
 			return;
 		}
-		$begin = date_format($_POST["ngaybatdau"], "d/m/Y");
-		$end = date_format($_POST["ngayketthuc"], "d/m/Y");
+		$begin = (new DateTime($_POST["ngaybatdau"]))->format('Y-m-d');
+		$end = (new DateTime($_POST["ngayketthuc"]))->format('Y-m-d');
 		$array = getHocVienInRange($begin, $end);
-		$filename = exportArrayToExcel($array, 'Danh sach van bang theo thoi gian');
+		$filepath = exportArrayToExcel($array, 'Danh sach van bang theo thoi gian');
 	} else {
 		$array = getHocVienDaHoanThanh();
-		$filename = exportArrayToExcel($array, 'Danh sach van bang tat ca');
+		$filepath = exportArrayToExcel($array, 'Danh sach van bang tat ca');
 	}
-	header("Content-type: application/vnd.ms-excel", true, 200);
+	$filename = basename($filepath);
+	header("Content-type: application/octet-stream");
 	header("Content-disposition: attachment; filename=$filename");
-	//header("Pragma: no-cache");
 	header("Expires: 0");
+	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+	header('Pragma: public');
+	ob_end_clean();
 	ob_clean();
 	flush();
-	readfile($filename);
+	readfile($filepath);
 	wp_die();
 }
 ?>
@@ -34,6 +37,6 @@ if (isset($_POST["Xuat"]) || isset($_POST["XuatTatCa"])) {
 		<input type="date" id="ngaybatdau" name="ngaybatdau" class="form-control mb-2 mr-sm-2">
 		<label for="ngayketthuc" class="mr-sm-2">Thời gian kết thúc:</label>
 		<input type="date" id="ngayketthuc" name="ngayketthuc" class="form-control mb-2 mr-sm-2">
-		<input type="submit" class="btn btn-success" value="Xuất file" name="Xuat"> hoặc
-		<input type="submit" class="btn btn-success" value="Xuất tất cả" name="XuatTatCa">
+		<input type="submit" class="btn btn-success" value="Xuất theo khoảng thời gian" name="Xuat"> hoặc
+		<input type="submit" class="btn btn-success" value="Xuất tất cả thời gian" name="XuatTatCa">
 	</form>
