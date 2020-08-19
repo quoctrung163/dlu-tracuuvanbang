@@ -35,17 +35,19 @@ if (isset($_POST["CapNhatTT"])) {
 if (isset($_POST["XuatHocVienDK"])) {
 	$array = getHocVienDangKy();
 	$filepath = exportArrayToExcel($array, 'Danh sach hoc vien dang ky');
-	$filename = basename($filepath);
-	header("Content-type: application/octet-stream");
-	header("Content-disposition: attachment; filename=$filename");
-	header("Expires: 0");
-	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-	header('Pragma: public');
-	ob_end_clean();
-	ob_clean();
-	flush();
-	readfile($filepath);
-	wp_die();
+	if ($filepath != null) {
+		$filename = basename($filepath);
+		header("Content-type: application/octet-stream");
+		header("Content-disposition: attachment; filename=$filename");
+		header("Expires: 0");
+		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+		header('Pragma: public');
+		ob_end_clean();
+		ob_clean();
+		flush();
+		readfile($filepath);
+		wp_die();
+	}
 }
 ?>
 

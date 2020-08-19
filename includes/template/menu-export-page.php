@@ -8,16 +8,18 @@ if (isset($_POST["Xuat"]) || isset($_POST["XuatTatCa"])) {
 		if ($_POST["ngaybatdau"] == null || $_POST["ngayketthuc"] == null) {
 			showAlert("Không được để trống các trường bắt buộc");
 		} else {
-			$begin = (new DateTime($_POST["ngaybatdau"]))->format('Y-m-d');
-			$end = (new DateTime($_POST["ngayketthuc"]))->format('Y-m-d');
+			$begin = (new DateTime($_POST["ngaybatdau"]))->format('d/m/Y');
+			$end = (new DateTime($_POST["ngayketthuc"]))->format('d/m/Y');
 			$array = getHocVienInRange($begin, $end);
 			$filepath = exportArrayToExcel($array, 'Danh sach van bang theo thoi gian');
-			showDownloadDialog($filepath);
+			if ($filepath != null)
+				showDownloadDialog($filepath);
 		}
 	} else {
 		$array = getHocVienDaHoanThanh();
 		$filepath = exportArrayToExcel($array, 'Danh sach van bang tat ca');
-		showDownloadDialog($filepath);
+		if ($filepath != null)
+			showDownloadDialog($filepath);
 	}
 }
 

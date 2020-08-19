@@ -193,7 +193,12 @@ function updateDatabase($array)
  */
 function getHocVienDaHoanThanh()
 {
-	return getAllHocVienDangKy(true);
+	try {
+		return getAllHocVienDangKy(true);
+	} catch (Exception $e) {
+		showAlert("Có lỗi xử lý chức năng này. Vui lòng thử lại sau, hoặc liên lạc với đội ngũ phát triển chức năng");
+		return null;
+	}
 }
 
 /**
@@ -201,7 +206,12 @@ function getHocVienDaHoanThanh()
  */
 function getHocVienDangKy()
 {
-	return getAllHocVienDangKy(false);
+	try {
+		return getAllHocVienDangKy(false);
+	} catch (Exception $e) {
+		showAlert("Có lỗi xử lý chức năng này. Vui lòng thử lại sau, hoặc liên lạc với đội ngũ phát triển chức năng");
+		return null;
+	}
 }
 
 /**
@@ -209,7 +219,12 @@ function getHocVienDangKy()
  */
 function getHocVienInRange($datebegin, $dateend)
 {
-	return getAllHocVienVanBang($datebegin, $dateend);
+	try {
+		return getAllHocVienVanBang($datebegin, $dateend);
+	} catch (Exception $e) {
+		showAlert("Có lỗi xử lý chức năng này. Vui lòng thử lại sau, hoặc liên lạc với đội ngũ phát triển chức năng");
+		return null;
+	}
 }
 
 /**
@@ -217,7 +232,12 @@ function getHocVienInRange($datebegin, $dateend)
  */
 function exportArrayToExcel($array, $name)
 {
-	return setDataExcel($array, $name);
+	try {
+		return setDataExcel($array, $name);
+	} catch (Exception $e) {
+		showAlert("Có lỗi xử lý chức năng này. Vui lòng thử lại sau, hoặc liên lạc với đội ngũ phát triển chức năng");
+		return null;
+	}
 }
 
 /**
