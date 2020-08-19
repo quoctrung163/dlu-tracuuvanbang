@@ -79,5 +79,6 @@ if (isset($_POST["XuatHocVienDK"])) {
 		<li>Nếu trường hợp có sai sót, thì chỉ cần nhập từ file Excel những học viên cần sửa đổi, không cần phải nhập tất cả.</li>
 		<li>Không thể thêm học viên mới bằng chức năng này được. Nếu muốn sử dụng, vui lòng chọn plugin Quản lý học viên</li>
 		<li>Tên học viên là cố định, không thể thay đổi trong chức năng này.</li>
+		<li>Hệ thống chia học viên thành 2 nhóm: "Học viên đăng ký" & "Học viên đã hoàn thành" dựa vào các thông tin liên quan đến văn bằng như điểm thi, số hiệu bằng và số quyết định</li>
 	</ul>
 </em>
