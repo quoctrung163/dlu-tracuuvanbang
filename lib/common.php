@@ -157,7 +157,7 @@ function printHeaderTable()
 function mapArrayToObject($array)
 {
 	$metadata = (object)array(
-		'birthday' => $array[2],
+		'birthday' => fixDateFormatFromExcel($array[2], 'd/m/Y'),
 		'address' => $array[3],
 		'cmnd' => $array[4],
 		'email' => $array[5],

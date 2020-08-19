@@ -6,7 +6,7 @@ require_once($file1);
 if (isset($_POST["Xuat"]) || isset($_POST["XuatTatCa"])) {
 	if (isset($_POST["Xuat"])) {
 		if ($_POST["ngaybatdau"] == null || $_POST["ngayketthuc"] == null) {
-			showCustomAlert("Không được để trống các trường bắt buộc");
+			showAlert("Không được để trống các trường bắt buộc");
 		} else {
 			$begin = (new DateTime($_POST["ngaybatdau"]))->format('Y-m-d');
 			$end = (new DateTime($_POST["ngayketthuc"]))->format('Y-m-d');

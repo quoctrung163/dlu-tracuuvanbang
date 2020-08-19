@@ -6,19 +6,18 @@ require_once($file);
 if (isset($_POST["CapNhatTT"])) {
 	// Lỗi upload file
 	if ($_FILES["file"]["error"] > 0) {
-		echo "Error: " . $_FILES["file"]["error"] . "<br>";
-		showCustomAlert('Lỗi upload file!');
+		showAlert('Lỗi upload file!');
 	} else { // Upload file thành công
 		$name = $_FILES["file"]["name"];
 		// get extension of file
 		$ext = end(explode(".", $name));
 		if ($ext != 'xlsx') {
-			showCustomAlert('File upload không đúng định dạng (.xlsx)');
+			showAlert('File upload không đúng định dạng (.xlsx)');
 			return;
 		}
 		// Lưu vào server
 		$newname = date('d-m-Y-H-i-s') . '.' . $ext;
-		$filetoStore = ABSPATH . 'wp-content/uploads/Files';
+		$filetoStore = ABSPATH . 'wp-content/uploads/Files/';
 		$target = $filetoStore . $newname;
 		move_uploaded_file($_FILES['file']['tmp_name'], $target);
 		// Đọc dữ liệu và tiến hành cập nhật thông tin
@@ -28,7 +27,7 @@ if (isset($_POST["CapNhatTT"])) {
 			echo '<h2>Đã có lỗi khi cập nhật những dòng sau</h2>';
 			printTable($result);
 		} else {
-			showCustomAlert('Cập nhật thành công dữ liệu vào CSDL');
+			showAlert('Cập nhật thành công dữ liệu vào CSDL');
 		}
 	}
 }
@@ -73,6 +72,10 @@ if (isset($_POST["XuatHocVienDK"])) {
 	</ul>
 </p>
 <h3 class="myplugin">Lưu ý:</h3>
-<ul class="dlu-admin-menu-update">
-	<li><em>Nếu trường hợp có sai sót, thì chỉ cần nhập từ file Excel những học viên cần sửa đổi, không cần phải nhập tất cả.</em></li>
-</ul>
+<em>
+	<ul class="dlu-admin-menu-update">
+		<li>Nếu trường hợp có sai sót, thì chỉ cần nhập từ file Excel những học viên cần sửa đổi, không cần phải nhập tất cả.</li>
+		<li>Không thể thêm học viên mới bằng chức năng này được. Nếu muốn sử dụng, vui lòng chọn plugin Quản lý học viên</li>
+		<li>Tên học viên là cố định, không thể thay đổi trong chức năng này.</li>
+	</ul>
+</em>

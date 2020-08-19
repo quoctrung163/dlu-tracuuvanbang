@@ -37,8 +37,8 @@ function setDataExcel($array, $name)
 	// Định dạng kiểu text cho cột E
 	$spreadsheet->getActiveSheet()->getStyle('E:E')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_TEXT);
 	// Định dạng kiểu DateTime d/m/Y cho ngày sinh và ngày cấp
-	$spreadsheet->getActiveSheet()->getStyle('C:C')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_DATE_DDMMYYYY);
-	$spreadsheet->getActiveSheet()->getStyle('I:I')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_DATE_DDMMYYYY);
+	$spreadsheet->getActiveSheet()->getStyle('C:C')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_TEXT);
+	$spreadsheet->getActiveSheet()->getStyle('I:I')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_TEXT);
 	// Ghi vào file Excel
 	$writer = new Xlsx($spreadsheet);
 	// Lưu vào server
